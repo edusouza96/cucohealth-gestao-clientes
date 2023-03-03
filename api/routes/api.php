@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 
-
+Route::prefix('clientes')->group(function () {
+    Route::controller(ClientController::class)->group(function () {
+        Route::post('salvar', 'store')->name('clients.store');
+    });
+});
