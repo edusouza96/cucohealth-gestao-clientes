@@ -1,6 +1,8 @@
 <template>
     <div class="clients container">
        <br>
+       <Message :message="message" :typeMessage="typeMessage" :loading="loading"/>
+       
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-striped table-hover w-100">
@@ -18,7 +20,7 @@
                             <td>{{ client.cpf }}</td>
                             <td>{{ client.phone }}</td>
                             <td class="text-center">
-                                <button class="btn btn-danger btn-sm" type="button">
+                                <button class="btn btn-danger btn-sm" type="button" @click="remove(client)">
                                     <i class="fas fa-trash"></i> 
                                 </button>
                             </td>
@@ -31,13 +33,37 @@
 </template>
 
 <script>
+import Message from '../components/Message.vue'
 export default {
     data() {
         return {
             clients: [],
+            loading: false,
+            typeMessage: null,
+            message: null,
         };
     },
     methods: {
+        remove(client){
+            this.loading = true;
+            this.typeMessage = null;
+            this.message = null;
+            this.axios
+                .delete("http://localhost:8000/api/clientes/"+client.id)
+                .then((response) => {
+                    if (response.data.success) {
+                        this.message = response.data.message;
+                        this.loading = false;
+                        this.typeMessage = 'success';
+                        this.get();
+                    }
+                }).catch((error) => {
+                    this.message = error.response.data.message;
+                    this.loading = false;
+                    this.typeMessage = 'danger';
+                });
+
+        },
         get(){
             this.axios
                 .get("http://localhost:8000/api/clientes")
@@ -52,6 +78,7 @@ export default {
         this.get();
     },
     components: {
+        Message
     }
 };
 </script>
