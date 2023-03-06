@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
@@ -14,6 +15,20 @@ class Client extends Model
     protected $fillable = ['name', 'cpf', 'birth_date', 'phone'];
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
     protected $dates = ['birth_date'];
+
+    public function scopeName(Builder $query, $parameterName)
+    {
+        $names = explode(' ', $parameterName);
+
+        foreach ($names as $name) {
+            $query->where('name', 'LIKE', '%'.strtoupper(trim($name)).'%');
+        }
+    }
+
+    public function scopeCpf(Builder $query, $cpf)
+    {
+        $query->where('cpf', preg_replace("/[^0-9]/", "", $cpf));
+    }
 
     public function birthDate(): Attribute
     {

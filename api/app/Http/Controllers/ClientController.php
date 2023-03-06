@@ -25,12 +25,19 @@ class ClientController extends Controller
         }
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Client::orderBy('name', 'asc')->get();
+        $clients = Client::orderBy('name', 'asc');
+        if($request->name){
+            $clients->name($request->name);
+        }
+
+        if($request->cpf){
+            $clients->cpf($request->cpf);
+        }
 
         return response()->json([
-            'data' => $clients,
+            'data' => $clients->get(),
             'message' => '',
             'success' => true
         ]);
