@@ -23,3 +23,14 @@
 
 ### Postman documentação endpoints
 - https://documenter.getpostman.com/view/3050772/2s93Jox5cX
+
+## APP 
+### Técnologias 
+- Vuw.js 3
+- Bootstrap 5
+
+### Como Executar
+- Rodar o comando  ``` git clone edusouza96/cucohealth-gestao-clientes ```
+- Acessar ```cd app```
+- Rodar o comando  ``` npm install```
+- Rodar o comando  ``` php run dev```
