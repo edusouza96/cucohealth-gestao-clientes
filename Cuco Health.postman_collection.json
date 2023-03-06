@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "dd435c97-7dea-420a-b7a7-6bc6bb4302c8",
+		"name": "Cuco Health",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3050772"
+	},
+	"item": [
+		{
+			"name": "Salvar clientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Eduardo souZA\",\r\n    \"birth_date\": \"1996-03-05\",\r\n    \"phone\": \"(51)98188-2850\",\r\n    \"cpf\": \"861.755.560-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todos clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar clientes por nome e/ou cpf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/clientes?name=souza&cpf=86175556020",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "souza"
+						},
+						{
+							"key": "cpf",
+							"value": "86175556020"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover Clientes pelo ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/clientes/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"clientes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
