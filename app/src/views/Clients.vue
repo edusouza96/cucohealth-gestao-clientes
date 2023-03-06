@@ -1,8 +1,17 @@
 <template>
     <div class="clients container">
-       <br>
-       <Message :message="message" :typeMessage="typeMessage" :loading="loading"/>
-       
+        <div class="row">
+            <div class="col-12 text-end my-3">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_client_modal">
+                    <i class="fas fa-plus"></i> 
+                    Adicionar
+                </button>
+            </div>
+        </div>
+        
+        <SaveClient @stored="stored"/>
+        <Message :message="message" :typeMessage="typeMessage" :loading="loading"/>
+
         <div class="row">
             <div class="table-responsive">
                 <table class="table table-striped table-hover w-100">
@@ -33,7 +42,8 @@
 </template>
 
 <script>
-import Message from '../components/Message.vue'
+import Message from '../components/Message.vue';
+import SaveClient from '../components/SaveClient.vue';
 export default {
     data() {
         return {
@@ -44,6 +54,14 @@ export default {
         };
     },
     methods: {
+        stored(message){
+            this.message = message;
+            this.typeMessage = 'success';
+            this.get();
+            var modalElement = document.getElementById('add_client_modal');
+            var modal = bootstrap.Modal.getInstance(modalElement)
+            modal.hide();
+        },
         remove(client){
             this.loading = true;
             this.typeMessage = null;
@@ -78,7 +96,8 @@ export default {
         this.get();
     },
     components: {
-        Message
+        Message,
+        SaveClient
     }
 };
 </script>
