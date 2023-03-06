@@ -35,4 +35,22 @@ class ClientController extends Controller
             'success' => true
         ]);
     }
+
+    public function destroy($id)
+    {
+        try {
+            Client::destroy($id);
+
+            return response()->json([
+                'message' => 'Cliente removido com sucesso',
+                'success' => true
+            ]);
+
+        } catch (\Exception $ex) {
+            return response()->json([
+                'message' => $ex->getMessage(),
+                'success' => false
+            ]);
+        }
+    }
 }

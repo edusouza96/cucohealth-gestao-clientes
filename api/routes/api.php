@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 
-Route::apiResource('clientes', ClientController::class);
+Route::apiResource('clientes', ClientController::class)->except([
+    'show', 'update'
+]);
