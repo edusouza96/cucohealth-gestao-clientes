@@ -24,4 +24,15 @@ class ClientController extends Controller
             ]);
         }
     }
+
+    public function index()
+    {
+        $clients = Client::orderBy('name', 'asc')->get();
+
+        return response()->json([
+            'data' => $clients,
+            'message' => '',
+            'success' => true
+        ]);
+    }
 }

@@ -27,7 +27,7 @@ class Client extends Model
     {
         return new Attribute(
             get: fn ($value) => vsprintf("%s%s%s.%s%s%s.%s%s%s-%s%s", str_split($value)),
-            set: fn ($value) => str_replace([".","-"," "], "", $value)
+            set: fn ($value) => preg_replace("/[^0-9]/", "", $value)
         );
     }
 
@@ -42,8 +42,8 @@ class Client extends Model
     public function phone(): Attribute
     {
         return new Attribute(
-            get: fn ($value) => ($value ? vsprintf("(%s%s) %s%s%s%s%s-%s%s%s%s", str_split($value)) : null),
-            set: fn ($value) => ($value ? str_replace(["(","-"," ", ")"], "", $value) : null)
+            get: fn ($value) => ($value ? vsprintf("(%s%s)%s%s%s%s%s-%s%s%s%s", str_split($value)) : null),
+            set: fn ($value) => ($value ? preg_replace("/[^0-9]/", "", $value) : null)
         );
     }
 

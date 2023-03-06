@@ -19,8 +19,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 
-Route::prefix('clientes')->group(function () {
-    Route::controller(ClientController::class)->group(function () {
-        Route::post('salvar', 'store')->name('clients.store');
-    });
-});
+Route::apiResource('clientes', ClientController::class);
