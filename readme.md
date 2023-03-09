@@ -4,7 +4,9 @@
 ```
 git clone edusouza96/cucohealth-gestao-clientes
 cd cucohealth-gestao-clientes
+mv api/.env.example api/.env
 docker build -t laravel_app:latest ./api
+docker build -t node_app:latest ./app
 docker-compose up
 ```
 - Acessar no navegador http://localhost:5173/
