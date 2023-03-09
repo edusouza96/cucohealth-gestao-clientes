@@ -2,7 +2,7 @@
 
 - No terminal executar os seguintes passos
 ```
-git clone edusouza96/cucohealth-gestao-clientes
+git clone https://github.com/edusouza96/cucohealth-gestao-clientes.git
 cd cucohealth-gestao-clientes
 mv api/.env.example api/.env
 docker build -t laravel_app:latest ./api
@@ -21,7 +21,7 @@ docker-compose up
 - MySql
 
 ### Como Executar
-- Rodar o comando  ``` git clone edusouza96/cucohealth-gestao-clientes ```
+- Rodar o comando  ``` git clone https://github.com/edusouza96/cucohealth-gestao-clientes.git ```
 - Criar banco de dados ``` CREATE DATABASE IF NOT EXISTS client_manager; ```
 - Acessar ```cd api```
 - Renomear o arquivo ``` .env.example``` para  ``` .env```
