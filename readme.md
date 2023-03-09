@@ -1,20 +1,7 @@
-# Com Docker
-
-- No terminal executar os seguintes passos
-```
-git clone https://github.com/edusouza96/cucohealth-gestao-clientes.git
-cd cucohealth-gestao-clientes
-mv api/.env.example api/.env
-docker build -t laravel_app:latest ./api
-docker build -t node_app:latest ./app
-docker-compose up
-```
-- Acessar no navegador http://localhost:5173/
-
 # Sem Docker
 
 ## API 
-### Técnologias 
+### Tecnologias 
 - PHP 8.1
 - Laravel 9
 - Composer 2
@@ -39,8 +26,8 @@ configurado para rodar em http://localhost:8000/
 - https://documenter.getpostman.com/view/3050772/2s93Jox5cX
 
 ## APP 
-### Técnologias 
-- Vuw.js 3
+### Tecnologias 
+- Vue.js 3
 - Bootstrap 5
 
 ### Como Executar
